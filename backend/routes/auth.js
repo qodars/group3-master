@@ -1,4 +1,4 @@
-const { authControllers, profileController, vacancyController } = require("../controller")
+const { authControllers, profileController, vacancyController, applyController } = require("../controller")
 const { verifyToken, checkRole } = require("../middleware/auth")
 const router = require("express").Router();
 
@@ -20,6 +20,7 @@ router.patch("/jobvacancyupdate/:id?", verifyToken, checkRole, vacancyController
  router.patch("/profileedit", verifyToken,profileController.update);
  router.get("/findjobs", verifyToken, vacancyController.Finduserjob);
  router.get("/jobdetail/:id?",verifyToken, vacancyController.userjob);
+ router.post("/applyjob/:id?", verifyToken, applyController.applyjob);
 
 
 module.exports = router;
